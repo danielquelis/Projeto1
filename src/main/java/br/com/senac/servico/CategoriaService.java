@@ -15,28 +15,28 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepositorio repoCat;
 	
-//	public Categoria buscar(Integer id) {
-//		Optional<Categoria> objCategoria = repoCat.findById(id);
-//		return objCategoria.orElseThrow(() -> new ObjectNotFoundException("Categoria não encontrada! Id: " + id + ", Tipo: " + Categoria.class.getName()));
-//	}
-//	
-//	public Categoria inserir(Categoria objCategoria) {
-//		objCategoria.setId(null);
-//		return repoCat.save(objCategoria);
-//	}
-//	
-//	public Categoria alterar(Categoria objCategoria) {
-//		
-//		Categoria objCategoriaEncontrado = buscar(objCategoria.getId());
-//		objCategoriaEncontrado.setNome(objCategoria.getNome());
-//		
-//		return repoCat.save(objCategoriaEncontrado);
-//	}
-//	
-//	public void excluir(Integer id) {
-//		
-//		repoCat.deleteById(id);
-//	}
+	public Categoria buscar(Integer id) {
+		Optional<Categoria> objCategoria = repoCat.findById(id);
+		return objCategoria.orElseThrow(() -> new ObjectNotFoundException("Categoria não encontrada! Id: " + id + ", Tipo: " + Categoria.class.getName()));
+	}
+	
+	public Categoria inserir(Categoria objCategoria) {
+		objCategoria.setId(null);
+		return repoCat.save(objCategoria);
+	}
+	
+	public Categoria alterar(Categoria objCategoria) {
+		
+		Categoria objCategoriaEncontrado = buscar(objCategoria.getId());
+		objCategoriaEncontrado.setNome(objCategoria.getNome());
+		
+		return repoCat.save(objCategoriaEncontrado);
+	}
+	
+	public void excluir(Integer id) {
+		
+		repoCat.deleteById(id);
+	}
 	
 	public List<Categoria> listaCategorias(){
 		
