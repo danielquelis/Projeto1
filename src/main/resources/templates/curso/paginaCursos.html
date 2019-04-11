@@ -10,6 +10,45 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<strong>Categorias</strong>
+	</div>
+	<div class="panel-body">
+		<div class="table-responsive">
+			<table class="table table-sm table-striped table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Curso</th>
+						<th>Descrição</th>
+						<th>Preço</th>
+						<th>Categoria</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="curso : ${cursos}">
+						<td th:text="${curso.id}"></td>
+						<td th:text="${curso.nome}"></td>
+						<td th:text="${curso.descricao}"></td>
+						<td th:text="${'R$: ' + curso.preco}"></td>
+						<td><span th:each="cat : ${curso.categorias}" th:text="${'' +cat.nome+ '/'}"></span></td>
+						<td>
+							<div class="btn-group pull-right">
+								<a class="btn btn-sm btn-primary">Alterar</a>
+								<a class="delete btn btn-sm btn-danger">Excluir</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<a class="btn btn-sm btn-success" th:href="@{/adicionar/}">Adicionar</a>
+	</div>
+</div>
 </body>
 </html>
