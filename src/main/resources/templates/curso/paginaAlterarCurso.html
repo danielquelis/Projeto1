@@ -41,7 +41,7 @@
 					<label>Categoria</label>
 					<ul style="list-style: none;">
 						<li th:each="cat : ${categorias}">
-							<input type="checkbox" th:field="*{categorias}" th:value="*{cat.id}" th:checked="${true}"/>
+							<input type="checkbox" th:field="*{categorias}" th:value="${cat.id}" th:checked="${true}"/>
 							<label th:text="${cat.nome}"></label>
 						</li>
 					</ul>

@@ -52,9 +52,9 @@ public class CursoController {
 	
 	@GetMapping("/alterar/{id}")
 	public ModelAndView alterar(@PathVariable("id") Integer id) throws ObjectNotFoundException{
-		ModelAndView mv = new ModelAndView("curso/paginaAlterar");
+		ModelAndView mv = new ModelAndView("curso/paginaAlterarCurso");
 		mv.addObject("curso", cursoService.buscar(id));
-		mv.addObject("curso", categoriaService.listaCategorias());
+		mv.addObject("categorias", categoriaService.listaCategorias());
 		return mv;
 	}
 	
