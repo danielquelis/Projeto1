@@ -37,7 +37,7 @@
 						<td><span th:each="cat : ${curso.categorias}" th:text="${'' +cat.nome+ '/'}"></span></td>
 						<td>
 							<div class="btn-group pull-right">
-								<a class="btn btn-sm btn-primary">Alterar</a>
+								<a class="btn btn-sm btn-primary" th:href="@{/Curso/alterar/{id}(id=${curso.id})}">Alterar</a>
 								<a class="delete btn btn-sm btn-danger">Excluir</a>
 							</div>
 						</td>
@@ -47,7 +47,7 @@
 		</div>
 	</div>
 	<div class="panel-footer">
-		<a class="btn btn-sm btn-success" th:href="@{/adicionar/}">Adicionar</a>
+		<a class="btn btn-sm btn-success" th:href="@{/Curso/adicionar/}">Adicionar</a>
 	</div>
 </div>
 </body>

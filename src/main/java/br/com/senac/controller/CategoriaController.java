@@ -5,18 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.senac.dominio.Categoria;
 import br.com.senac.servico.CategoriaService;
 
 @Controller
+@RequestMapping("/Categoria")
 public class CategoriaController {
 	
 	@Autowired
 	private CategoriaService categoriaService;
 	
-	@GetMapping("/listarCategorias")
+	@GetMapping("/listar")
 	public ModelAndView listaCategorias() {
 		ModelAndView mv = new ModelAndView("categoria/paginaCategorias");
 		mv.addObject("categorias", categoriaService.listaCategorias());
@@ -43,7 +45,7 @@ public class CategoriaController {
 		return listaCategorias();
 	}
 	
-	@GetMapping("/alteraCategoria/{id}")
+	@GetMapping("/altera/{id}")
 	public ModelAndView alterar(@PathVariable("id")Integer id) {
 		ModelAndView mv = new ModelAndView("categoria/paginaAlterar");
 		mv.addObject("categoria", categoriaService.buscar(id));
