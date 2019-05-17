@@ -20,6 +20,8 @@ import javax.persistence.GenerationType;
 @Entity
 public class Aluno implements Serializable{
 	
+	private static final long serialVersionUID = -9047577929187802158L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer Id;
@@ -37,6 +39,9 @@ public class Aluno implements Serializable{
 	@ElementCollection
 	@CollectionTable(name="TELEFONE")
 	private Set<String> telefones = new HashSet<>();
+	
+	@OneToMany(mappedBy="aluno")
+	private List<Pedido> pedidos = new ArrayList<>();
 	
 	public String getSenha() {
 		return senha;
@@ -86,5 +91,11 @@ public class Aluno implements Serializable{
 		this.nome = nome;
 	}
 
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
 
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 }

@@ -1,5 +1,6 @@
 package br.com.senac.inicializacao;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,11 @@ import br.com.senac.dominio.Cidade;
 import br.com.senac.dominio.Curso;
 import br.com.senac.dominio.Endereco;
 import br.com.senac.dominio.Estado;
+import br.com.senac.dominio.Pagamento;
+import br.com.senac.dominio.PagamentoComBoleto;
+import br.com.senac.dominio.Pedido;
 import br.com.senac.dominio.Usuario;
+import br.com.senac.dominio.enums.StatusPagamento;
 import br.com.senac.repositorio.AlunoRepositorio;
 import br.com.senac.repositorio.CategoriaRepositorio;
 import br.com.senac.repositorio.CidadeRepositorio;
@@ -140,6 +145,22 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		curso2.setCategorias(Arrays.asList(categoria1));
 		
 		cursoRepositorio.saveAll(Arrays.asList(curso1,curso2));
+		
+		Pedido ped1 = new Pedido();
+		ped1.setAluno(aluno1);
+		ped1.setEnderecoDeEntrega(end1);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		
+		try {
+			ped1.setDataPedido(sdf.parse("27/06/2018 09:08"));
+			
+			Pagamento pag1 = new PagamentoComBoleto(null, StatusPagamento.QUITADO, ped1, sdf.parse("30/06/2018 00:00"), sdf.parse("29/06/2018 00:00"));
+			
+			ped1.setPagamento(pag1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
